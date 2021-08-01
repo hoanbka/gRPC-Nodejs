@@ -1,0 +1,66 @@
+{
+  "name": "grpc-nodejs-mysql-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "client:dev": "nodemon --exec babel-node client/app.js",
+    "client:start": "node -r esm client/app.js",
+    "server:dev": "nodemon --exec babel-node server",
+    "server:start": "node -r esm server",
+    "pretest": "eslint --fix --ignore-path .eslintignore .",
+    "test": "NODE_ENV=testing yarn knex seed:run && mocha --require @babel/register --exit",
+    "migrate:make": "knex migrate:make products",
+    "migrate:latest": "knex migrate:latest",
+    "seed:make": "knex seed:make products",
+    "seed:run": "knex seed:run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoanbka/gRPC-Nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoanbka/gRPC-Nodejs/issues"
+  },
+  "homepage": "https://github.com/hoanbka/gRPC-Nodejs#readme",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.4.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "esm": "^3.2.13",
+    "express": "^4.16.4",
+    "google-protobuf": "^3.7.0-rc.2",
+    "grpc": "^1.18.0",
+    "knex": "^0.19.5",
+    "mysql": "^2.18.1",
+    "pg": "^7.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^1.3.1",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10",
+    "nyc": "^14.1.1",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
+    "supertest": "^3.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
